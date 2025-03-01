@@ -55,9 +55,11 @@ const Hero = () => {
             textTransform: "uppercase",
             textShadow: "2px 2px 8px rgba(0, 255, 255, 0.8)",
             display: "inline-block",
+            whiteSpace: "normal",  // Allow wrapping for mobile screens
+            wordWrap: "break-word", // Ensure that the text wraps if necessary
           }}
         >
-          <span style={{ display: "inline-flex", gap: "25px" }}>
+          <span style={{ display: "inline-flex", gap: "25px", flexWrap: "wrap" }}>
             {"Hotel Pooja".split(" ").map((word, wordIndex) => (
               <span key={wordIndex} style={{ display: "inline-flex" }}>
                 {word.split("").map((char, index) => (
@@ -76,6 +78,7 @@ const Hero = () => {
             ))}
           </span>
         </h1>
+
 
         <p
           className="text-xl md:text-3xl mb-10 opacity-90 tracking-wide glowing-text animate-fade-in"
