@@ -36,8 +36,6 @@ const Contact = () => {
             ></iframe>
           </div>
 
-
-
           {/* Contact Info with Floating Cards */}
           <motion.div
             className="space-y-8"
@@ -46,23 +44,30 @@ const Contact = () => {
             transition={{ duration: 1, delay: 0.3 }}
           >
             {[
-              { icon: MapPin, title: "Address", text: "Hotel Pooja, Kolhapur Sangali Highway" },
-              { icon: Phone, title: "Phone", text: "+91 9420132495" },
-              { icon: Mail, title: "Email", text: "hotelpooja@gmail.com" },
+              { icon: MapPin, title: "Address", text: "Hotel Pooja, Kolhapur Sangali Highway", link: "https://maps.app.goo.gl/E6wPMHgLKt8MksA68" },
+              { icon: Phone, title: "Phone", text: "+91 9420132495", link: "tel:+919420132495" },
+              { icon: Mail, title: "Email", text: "hotelpooja95@gmail.com", link: "mailto:hotelpooja95@gmail.com" },
               { icon: Clock, title: "Hours", text: "Monday - Sunday: 11:00 AM - 11:00 PM" },
             ].map((item, index) => (
-              <motion.div
+              <motion.a
                 key={index}
-                className="flex items-start space-x-4 bg-white p-5 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105"
-                whileHover={{ scale: 1.1 }}
-                animate={{ y: [0, -5, 0], transition: { duration: 2, repeat: Infinity, repeatType: "mirror" } }}
+                href={item.link || "#"}
+                className="block"
+                target={item.link ? "_blank" : ""}
+                rel="noopener noreferrer"
               >
-                <item.icon className="w-8 h-8 text-blue-600 flex-shrink-0" />
-                <div>
-                  <h3 className="font-semibold text-lg">{item.title}</h3>
-                  <p className="text-gray-600">{item.text}</p>
-                </div>
-              </motion.div>
+                <motion.div
+                  className="flex items-start space-x-4 bg-white p-5 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105"
+                  whileHover={{ scale: 1.1 }}
+                  animate={{ y: [0, -5, 0], transition: { duration: 2, repeat: Infinity, repeatType: "mirror" } }}
+                >
+                  <item.icon className="w-8 h-8 text-blue-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-lg">{item.title}</h3>
+                    <p className="text-gray-600">{item.text}</p>
+                  </div>
+                </motion.div>
+              </motion.a>
             ))}
 
             {/* Social Media with Glowing Icons */}

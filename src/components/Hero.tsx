@@ -58,7 +58,7 @@ const Hero = () => {
           }}
         >
           <span style={{ display: "inline-flex", gap: "25px" }}>
-            {"Pooja Hotel".split(" ").map((word, wordIndex) => (
+            {"Hotel Pooja".split(" ").map((word, wordIndex) => (
               <span key={wordIndex} style={{ display: "inline-flex" }}>
                 {word.split("").map((char, index) => (
                   <span

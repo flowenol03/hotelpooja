@@ -45,7 +45,7 @@ const Navigation: React.FC<NavigationProps> = ({
               href="#"
               className="text-2xl font-bold text-white tracking-wide font-serif neon-text"
             >
-              Pooja Hotel
+              Hotel Pooja
             </a>
           </motion.div>
 

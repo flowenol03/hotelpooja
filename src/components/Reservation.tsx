@@ -6,20 +6,25 @@ import emailjs from "@emailjs/browser";
 
 const Reservation = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
-    time: '',
-    guests: '2',
-    specialRequests: ''
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    guests: "2",
+    specialRequests: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [otp, setOtp] = useState('');
-  const [generatedOtp, setGeneratedOtp] = useState('');
+  const [otp, setOtp] = useState("");
+  const [generatedOtp, setGeneratedOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
+
+  const serviceId = "service_mweght9";
+  const templateId = "template_ddic4dr";
+  const userId = "1UZw1Eje3PQ68xFdd";
 
   const sendOtp = () => {
     if (!formData.email) {
@@ -27,140 +32,123 @@ const Reservation = () => {
         icon: "warning",
         title: "Email Required",
         text: "Please enter your email before requesting an OTP.",
-        showConfirmButton: true,
         confirmButtonColor: "#3085d6",
       });
       return;
     }
 
-    const otpCode = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit OTP
+    const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
     setGeneratedOtp(otpCode);
+    setIsLoading(true);
 
-    // EmailJS service details for OTP
-    //const serviceId = "service_v6ncbeq";  // Replace with your EmailJS Service ID
-    //const templateId = "template_lmkkolo"; // Replace with your EmailJS Template ID for OTP
-    //const userId = "IxrMx0MS4zfCx0rkB"; // Replace with your EmailJS Public Key
-
-    const templateParams = {
-      user_email: formData.email, // Use email instead of userEmail (ensuring consistency)
-      otp_code: otpCode, // Pass generated OTP
-    };
-
-    setIsLoading(true); // Show loading state before sending
-
-    emailjs.send(serviceId, templateId, templateParams, userId)
-      .then((response) => {
-        console.log("OTP sent successfully:", response);
+    emailjs
+      .send(
+        "service_7lhqnqe",
+        "template_aix7jbl",
+        { user_email: formData.email, otp_code: otpCode },
+        userId
+      )
+      .then(() => {
         Swal.fire({
           icon: "success",
           title: "OTP Sent!",
           text: `An OTP has been sent to ${formData.email}. Please check your inbox.`,
-          showConfirmButton: true,
           confirmButtonColor: "#3085d6",
         });
         setIsOtpSent(true);
       })
-      .catch((error) => {
-        console.error("OTP sending error:", error);
+      .catch(() => {
         Swal.fire({
           icon: "error",
           title: "Error!",
           text: "Failed to send OTP. Please try again later.",
-          showConfirmButton: true,
           confirmButtonColor: "#d33",
         });
       })
-      .finally(() => {
-        setIsLoading(false); // Hide loading state after the request completes
-      });
+      .finally(() => setIsLoading(false));
   };
 
   const verifyOtp = () => {
-    if (otp === generatedOtp) {
-      handleSubmit();
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Invalid OTP!',
-        text: 'The OTP you entered is incorrect. Please try again.',
-        showConfirmButton: true,
-        confirmButtonColor: '#d33'
-      });
-    }
+    setIsVerifyingOtp(true);
+
+    setTimeout(() => {
+      if (otp === generatedOtp) {
+        handleSubmit();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Invalid OTP!",
+          text: "The OTP you entered is incorrect. Please try again.",
+          confirmButtonColor: "#d33",
+        });
+      }
+      setIsVerifyingOtp(false);
+    }, 1000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email || !formData.phone || !formData.date || !formData.time) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Oops...',
-        text: 'Please fill in all required fields!',
-        showConfirmButton: true,
-        confirmButtonColor: '#3085d6'
-      });
-      return;
-    }
-
-    // Set loading state to true
+  const handleSubmit = () => {
     setIsLoading(true);
-
-    // EmailJS service details for booking confirmation
-    //const serviceId = "service_e2eyjg3";  // Replace with your EmailJS Service ID
-    //const templateId = "template_3q7auok"; // Replace with your EmailJS Template ID for booking confirmation
-    //const userId = "IxrMx0MS4zfCx0rkB"; // Replace with your EmailJS Public Key
-
-    // Prepare email parameters for booking confirmation
+  
     const emailParams = {
-      to_email: "itsdevilkk@gmail.com", // Your email address to receive the booking details
+      to_email: formData.email,
       customer_name: formData.name,
       customer_email: formData.email,
       customer_phone: formData.phone,
       event_date: formData.date,
       event_time: formData.time,
       guests: formData.guests,
-      special_requests: formData.specialRequests
+      special_requests: formData.specialRequests,
+      message: `
+        Hello Admin,
+  
+        A new booking has been made:
+  
+        - Name: ${formData.name}
+        - Email: ${formData.email}
+        - Phone: ${formData.phone}
+        - Event Date: ${formData.date}
+        - Event Time: ${formData.time}
+        - Guests: ${formData.guests}
+        - Special Requests: ${formData.specialRequests}
+  
+        Regards,
+        Hotel Pooja.
+      `,
     };
-
-    // Send email using EmailJS
-    emailjs.send(serviceId, templateId, emailParams, userId)
+  
+    emailjs
+      .send(serviceId, templateId, emailParams, userId)
       .then(() => {
         Swal.fire({
-          icon: 'success',
-          title: 'Reservation Submitted!',
-          text: 'Thank you for your reservation! Our team will contact you shortly.',
-          showConfirmButton: true,
-          confirmButtonColor: '#3085d6'
+          icon: "success",
+          title: "Reservation Submitted!",
+          text: "Thank you for your reservation! Our team will contact you shortly.",
+          confirmButtonColor: "#3085d6",
         }).then(() => {
           setIsSubmitted(true);
-          setTimeout(() => {
-            setIsSubmitted(false);
-            setFormData({
-              name: '',
-              email: '',
-              phone: '',
-              date: '',
-              time: '',
-              guests: '2',
-              specialRequests: ''
-            });
-          }, 3000);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            date: "",
+            time: "",
+            guests: "2",
+            specialRequests: "",
+          });
         });
       })
       .catch((error) => {
-        console.error("Email sending error:", error);
         Swal.fire({
-          icon: 'error',
-          title: 'Email Failed!',
+          icon: "error",
+          title: "Email Failed!",
           text: `Something went wrong while sending the reservation details. Error: ${error.text}`,
-          showConfirmButton: true,
-          confirmButtonColor: '#d33'
+          confirmButtonColor: "#d33",
         });
       })
-      .finally(() => {
-        setIsLoading(false); // Set loading state to false after the email is sent
-      });
+      .finally(() => setIsLoading(false));
   };
+  
+  
 
   return (
     <motion.section
@@ -204,8 +192,9 @@ const Reservation = () => {
               <button
                 className="mt-2 w-full bg-amber-600 text-white py-2 rounded-lg hover:bg-amber-700 transition-all duration-300"
                 onClick={verifyOtp}
+                disabled={isVerifyingOtp}
               >
-                Verify OTP
+                {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
               </button>
             </div>
           </motion.div>
@@ -242,7 +231,6 @@ const Reservation = () => {
                 />
               </motion.div>
 
-              {/* Phone Number Field */}
               <motion.div className="group relative" whileHover={{ scale: 1.05 }}>
                 <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
                 <input
@@ -268,7 +256,6 @@ const Reservation = () => {
                 />
               </motion.div>
 
-              {/* Time and Guests on the same row */}
               <motion.div className="group relative w-full" whileHover={{ scale: 1.05 }}>
                 <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" size={20} />
                 <input
