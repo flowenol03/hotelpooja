@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
+// Adjust the paths based on your project structure
+import blendersPrideImage from "../assets/blenders.jpg"; // Ensure the path is correct
+import smirnoffImage from "../assets/smirnoff.jpg"; // Ensure the path is correct
+import signatureDrinkImage from "../assets/signature.jpg"; // Ensure the path is correct
+
 const cocktails = [
   {
-    name: "Signature Martini",
-    description: "Premium vodka, dry vermouth, olive garnish",
-    image:
-      "https://images.unsplash.com/photo-1575023782549-62ca0d244b39?auto=format&fit=crop&w=800&q=80",
+    name: "Blenders Pride",
+    description: "Premium whiskey, smooth finish, oak notes",
+    image: blendersPrideImage,
   },
   {
-    name: "Spiced Mojito",
-    description: "Fresh mint, Indian spices, rum, lime juice",
-    image:
-      "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=800&q=80",
+    name: "Smirnoff",
+    description: "Classic vodka, crisp and clean, perfect for cocktails",
+    image: smirnoffImage,
   },
   {
-    name: "Classic Mojito",
-    description: "White rum, fresh lime, mint leaves, soda water",
-    image: "https://www.thecocktaildb.com/images/media/drink/metwgh1606770327.jpg",
+    name: "Signature",
+    description: "A unique blend of flavors, crafted to perfection",
+    image: signatureDrinkImage,
   },
 ];
 
@@ -110,7 +113,8 @@ const Bar = () => {
 
       {/* Ripple Animation CSS */}
       <style>
-        {`
+        {
+          `
           @keyframes ripple {
             from {
               transform: scale(0);
@@ -146,7 +150,8 @@ const Bar = () => {
               left: 100%;
             }
           }
-        `}
+          `
+        }
       </style>
     </section>
   );

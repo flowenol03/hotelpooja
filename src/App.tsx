@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu as MenuIcon, X, ChevronDown, Instagram, Facebook, Twitter, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import MenuSection from './components/Menu';
 import Bar from './components/Bar';
 import About from './components/About';
+import Gallery from './components/Gallery'; // Import Gallery Component
 import Reservation from './components/Reservation';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -31,6 +32,7 @@ function App() {
         <MenuSection />
         <Bar />
         <About />
+        <Gallery /> {/* Added Gallery Section Here */}
         <Reservation />
         <Contact />
       </main>

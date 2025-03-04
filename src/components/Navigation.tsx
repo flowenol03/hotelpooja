@@ -18,6 +18,7 @@ const Navigation: React.FC<NavigationProps> = ({
     { name: "Menu", href: "#menu" },
     { name: "Bar", href: "#bar" },
     { name: "About", href: "#about" },
+    { name: "Gallery", href: "#gallery" },
     { name: "Reservations", href: "#reservations" },
     { name: "Contact", href: "#contact" },
   ];
@@ -59,6 +60,13 @@ const Navigation: React.FC<NavigationProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index, duration: 0.3 }}
                 className="relative px-3 py-2 text-sm font-medium text-white transition-all duration-300 neon-text group"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector(link.href);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 {link.name}
                 {/* Animated Underline */}
@@ -99,7 +107,14 @@ const Navigation: React.FC<NavigationProps> = ({
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ delay: 0.05 * index, duration: 0.3 }}
                   className="text-lg text-white transition-all duration-300 neon-text"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    const target = document.querySelector(link.href);
+                    if (target) {
+                      target.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
                 >
                   {link.name}
                 </motion.a>
