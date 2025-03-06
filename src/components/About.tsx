@@ -18,7 +18,7 @@ const About = () => {
           <div className="space-y-8">
             <h2 className="text-5xl font-bold mb-8 animate-fade-in-up">Our Story</h2>
             <p className="text-xl leading-relaxed animate-fade-in-up delay-200">
-              Founded in 1995, Pooja Hotel has been a cornerstone of culinary excellence,
+              Founded in 1998, Pooja Hotel has been a cornerstone of culinary excellence,
               blending traditional flavors with modern innovation. Our passionate team
               of chefs brings together years of expertise to create unforgettable
               dining experiences.

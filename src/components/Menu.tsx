@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import butterChicken from "../assets/butter.jpg";
+import chickenPoojaSpecial from "../assets/chicken.jpg";
+import chickenBiryani from "../assets/biryani.jpg";
+import paneerTikka from "../assets/panner.jpg";
+import specialVegPooja from "../assets/special.jpg";
+import paneerButterMasala from "../assets/masala.jpg";
+
 
 const menuItems = [
   {
@@ -7,56 +14,51 @@ const menuItems = [
     name: "Butter Chicken",
     description:
       "Tender chicken in rich tomato-butter sauce, garnished with fresh cream and coriander",
-    price: "$18.99",
-    image:
-      "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=1920&q=80",
+    price: "₹560",
+    image: butterChicken,
     category: "Main Course",
   },
   {
     id: 2,
-    name: "Paneer Tikka",
-    description:
-      "Marinated cottage cheese with aromatic Indian spices, grilled to perfection",
-    price: "$15.99",
-    image:
-      "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=1920&q=80",
-    category: "Appetizers",
+    name: "Chicken Pooja Special",
+    description: "Creamy black lentils simmered overnight with rich spices",
+    price: "₹560",
+    image: chickenPoojaSpecial,
+    category: "Main Course",
   },
   {
     id: 3,
-    name: "Biryani",
+    name: "Chicken Biryani",
     description:
       "Fragrant basmati rice layered with exotic spices and tender meat or vegetables",
-    price: "$20.99",
-    image:
-      "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1920&q=80",
+    price: "₹300",
+    image: chickenBiryani,
     category: "Main Course",
   },
   {
     id: 4,
-    name: "Dal Makhani",
-    description: "Creamy black lentils simmered overnight with rich spices",
-    price: "$16.99",
-    image:
-      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1920&q=80",
-    category: "Main Course",
+    name: "Paneer Tikka",
+    description:
+      "Marinated cottage cheese with aromatic Indian spices, grilled to perfection",
+    price: "₹240",
+    image: paneerTikka,
+    category: "Appetizers",
   },
   {
     id: 5,
-    name: "Naan Bread",
+    name: "Special Veg Pooja",
     description: "Freshly baked Indian bread from our traditional clay oven",
-    price: "$4.99",
-    image:
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1920&q=80",
+    price: "₹300",
+    image: specialVegPooja,
     category: "Breads",
   },
   {
     id: 6,
-    name: "Chicken Curry",
-    description: "Slow-cooked chicken in a flavorful curry sauce with aromatic spices.",
-    price: "$17.99",
-    image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=80",
-    category: "Main Course"
+    name: "Paneer Butter Masala",
+    description: "Slow-cooked paneer in a flavorful curry sauce with aromatic spices.",
+    price: "₹240",
+    image: paneerButterMasala,
+    category: "Main Course",
   }
 ];
 
