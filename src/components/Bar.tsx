@@ -9,20 +9,21 @@ import signatureDrinkImage from "../assets/signature.jpg"; // Ensure the path is
 const cocktails = [
   {
     name: "Blenders Pride",
-    description: "Premium whiskey, smooth finish, oak notes",
+    description: "Premium Indian whisky with a smooth finish and rich oak notes.",
     image: blendersPrideImage,
   },
   {
     name: "Smirnoff",
-    description: "Classic vodka, crisp and clean, perfect for cocktails",
+    description: "Classic vodka with a crisp, clean taste, ideal for mixing in cocktails.",
     image: smirnoffImage,
   },
   {
     name: "Signature",
-    description: "A unique blend of flavors, crafted to perfection",
+    description: "Premium whisky with a distinctive smoky aroma and a refined taste.",
     image: signatureDrinkImage,
   },
 ];
+
 
 const Bar = () => {
   const [ripple, setRipple] = useState(null);

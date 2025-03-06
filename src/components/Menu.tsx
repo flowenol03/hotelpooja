@@ -13,7 +13,7 @@ const menuItems = [
     id: 1,
     name: "Butter Chicken",
     description:
-      "Tender chicken in rich tomato-butter sauce, garnished with fresh cream and coriander",
+      "Tender chicken in rich tomato-butter sauce, garnished with fresh cream and coriander.",
     price: "₹560",
     image: butterChicken,
     category: "Main Course",
@@ -21,7 +21,8 @@ const menuItems = [
   {
     id: 2,
     name: "Chicken Pooja Special",
-    description: "Creamy black lentils simmered overnight with rich spices",
+    description:
+      "Specially prepared chicken dish with a unique blend of rich spices and creamy texture.",
     price: "₹560",
     image: chickenPoojaSpecial,
     category: "Main Course",
@@ -30,7 +31,7 @@ const menuItems = [
     id: 3,
     name: "Chicken Biryani",
     description:
-      "Fragrant basmati rice layered with exotic spices and tender meat or vegetables",
+      "Fragrant basmati rice layered with exotic spices and tender chicken, slow-cooked for rich flavor.",
     price: "₹300",
     image: chickenBiryani,
     category: "Main Course",
@@ -39,7 +40,7 @@ const menuItems = [
     id: 4,
     name: "Paneer Tikka",
     description:
-      "Marinated cottage cheese with aromatic Indian spices, grilled to perfection",
+      "Marinated cottage cheese with aromatic Indian spices, grilled to perfection.",
     price: "₹240",
     image: paneerTikka,
     category: "Appetizers",
@@ -47,15 +48,17 @@ const menuItems = [
   {
     id: 5,
     name: "Special Veg Pooja",
-    description: "Freshly baked Indian bread from our traditional clay oven",
+    description:
+      "A delightful vegetarian special made with fresh ingredients and aromatic spices.",
     price: "₹300",
     image: specialVegPooja,
-    category: "Breads",
+    category: "Main Course",
   },
   {
     id: 6,
     name: "Paneer Butter Masala",
-    description: "Slow-cooked paneer in a flavorful curry sauce with aromatic spices.",
+    description:
+      "Slow-cooked paneer in a flavorful curry sauce with aromatic spices.",
     price: "₹240",
     image: paneerButterMasala,
     category: "Main Course",
